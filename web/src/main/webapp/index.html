@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="converterApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Converter Application</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <!-- Template js -->
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/jquery.appear.js"></script>
+    <script src="js/contact_me.js"></script>
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/index.js"></script>
+</head>
+
+<body>
+
+<section id="logo-section" class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="logo text-center">
+                    <h1>Converter Application</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Start Main Body Section -->
+<div class="mainbody-section text-center">
+    <div class="container" ng-controller="AppController">
+        <div class="row">
+
+            <div class="col-md-3">
+
+                <div class="menu-item blue">
+                    <a href="#" data-toggle="modal" ng-click="loadWeather()">
+                        <i class="fa fa-magic"></i>
+                        <p>Current Weather and Unit Converter</p>
+                    </a>
+                </div>
+
+                <div class="menu-item green">
+                    <a href="#" data-toggle="modal" ng-click="loadDistance()">
+                        <i class="fa fa-file-photo-o"></i>
+                        <p>Length/Distance Unit Converter</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="control-group form-horizontal well" ng-show="isLoadWeather">
+                    <div class="controls">
+                        <div class="input-append">
+                            <label class="span4"> City :
+                                <select class="span4" name="city" ng-model="weather.city" ng-options="city for city in cities" required>
+                                    <option value="">Select City</option>
+                                </select>
+                            </label>
+                        </div>
+                        <br/>
+                        <div class="input-append">
+                            <label class="span4"> FromUnit :
+                                <select class="span4" name="unit" ng-model="weather.unit" ng-options="unit.value as unit.key for unit in units" required>
+                                    <option value="">Select Unit</option>
+                                </select>
+                            </label>
+                        </div>
+                        <br/>
+                        <div class="input-append text-center">
+                            <button class="btn btn-primary" ng-click="getWeather()">Get Weather</button>
+                        </div>
+                        <br/>
+                    </div>
+                    <div id="result" class="controls" ng-show="weatherResultAvailable">
+                        <div class="input-append">
+                            <label class="span4"> Current Temp : {{ weather.temperature }} </label>
+                        </div>
+                        <div class="input-append">
+                            <label class="span4"> Max Temp : {{ weather.maximumTemperature }} </label>
+                        </div>
+                        <div class="input-append">
+                            <label class="span4"> Min Temp : {{ weather.minimumTemperature }} </label>
+                        </div>
+                        <div class="input-append text-center">
+                            <button class="btn btn-primary" ng-click="convert()">Convert to {{ weather.unit == 'Metric' ? 'Fahrenheit' : 'Celsius' }}</button>
+                            <button class="btn btn-primary" ng-click="reset()">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="menu-item light-red">
+                    <a href="#" data-toggle="modal" ng-click="loadCurrency()">
+                        <i class="fa fa-envelope-o"></i>
+                        <p>Currency Converter</p>
+                    </a>
+                </div>
+
+                <div class="menu-item color">
+                    <a href="#" data-toggle="modal" ng-click="loadArea()">
+                        <i class="fa fa-area-chart"></i>
+                        <p>Area Unit Converter</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Main Body Section -->
+
+<!-- Start Copyright Section -->
+<div class="copyright text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div>Design & Developed by
+                    <a href="http://sathishthangaraja.com" target="_blank">Sathish Thangaraja</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Copyright Section -->
+</div>
+</body>
+
+</html>

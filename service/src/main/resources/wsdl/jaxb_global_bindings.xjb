@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jxb:bindings jxb:version="2.1" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+              xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+              jxb:extensionBindingPrefixes="xjc"
+              xsi:schemalocation="http://java.sun.com/xml/ns/jaxb http://java.sun.com/xml/ns/jaxb/bindingschema_2_0.xsd">
+
+    <jxb:globalBindings generateElementProperty="false">
+        <xjc:typeSubstitution type="complex"/>
+        <xjc:treatRestrictionLikeNewType/>
+        <xjc:serializable/>
+        <xjc:simple/>
+        <xjc:javaType name="org.joda.time.DateTime"
+                      xmlType="xs:dateTime"
+                      adapter="com.convert.service.adapter.JAXBJodaDateTimeAdapter"/>
+    </jxb:globalBindings>
+
+</jxb:bindings>
