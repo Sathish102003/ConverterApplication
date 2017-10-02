@@ -1,14 +1,14 @@
 package com.convert.persistence;
 
-import java.util.List;
-
-import com.convert.persistence.model.Currency;
+import com.convert.persistence.exception.NoResultFoundException;
+import com.converter.domain.persistence.Currency;
+import com.converter.domain.persistence.CurrencyCode;
 
 public interface CurrencyDO {
 
-    Currency getCurrency(final long id);
+    Currency getCurrency(final CurrencyCode fromCurrencyCode, final CurrencyCode toCurrencyCode)
+            throws NoResultFoundException;
 
     void create(final Currency currency);
 
-    List<Currency> getAllCurrencies();
 }

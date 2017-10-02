@@ -1,7 +1,8 @@
 package com.converter.business;
-import com.converter.domain.service.Weather;
+import com.converter.domain.web.JSONConverter;
 
 public interface WeatherBO {
 
-    Weather findWeather(final String city, final String units);
+    JSONConverter findWeather(final String city, final String units);
+
 }

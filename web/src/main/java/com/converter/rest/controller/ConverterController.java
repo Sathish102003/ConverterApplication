@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.converter.business.CurrencyBO;
 import com.converter.business.WeatherBO;
-import com.converter.domain.service.Weather;
-import com.converter.rest.model.JSONConverter;
+import com.converter.domain.web.JSONConverter;
 import com.google.gson.Gson;
 
 @Controller
@@ -20,20 +20,21 @@ public class ConverterController {
     @Resource
     private WeatherBO weatherBO;
 
+    @Resource
+    private CurrencyBO currencyBO;
+
     @RequestMapping(value = "/convert/weather", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String weather(@RequestBody final JSONConverter model) {
-        final Weather weather = weatherBO.findWeather(model.getCity(), model.getUnit());
-        return new Gson().toJson(getJsonConverter(weather, model));
+        final JSONConverter converter = weatherBO.findWeather(model.getCity(), model.getUnit());
+        return new Gson().toJson(converter);
     }
 
-    private JSONConverter getJsonConverter(final Weather weather, final JSONConverter model) {
-        final JSONConverter jsonConverter = new JSONConverter();
-        jsonConverter.setCity(weather.getName());
-        jsonConverter.setUnit(model.getUnit());
-        jsonConverter.setTemperature(weather.getCurrentWeather().getTemperature());
-        jsonConverter.setMaximumTemperature(weather.getCurrentWeather().getMaximumTemperature());
-        jsonConverter.setMinimumTemperature(weather.getCurrentWeather().getMinimumTemperature());
-        return jsonConverter;
+    @RequestMapping(value = "/convert/currency", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String currency(@RequestBody final JSONConverter model) {
+        final JSONConverter converter = currencyBO.convertCurrency(model.getCurrencyFrom(), model.getCurrencyTo());
+        return new Gson().toJson(converter);
     }
+
 }

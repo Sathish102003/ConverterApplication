@@ -1,4 +1,4 @@
-package com.convert.persistence.model;
+package com.converter.domain.persistence;
 public enum CurrencyCode {
 
     AED("United Arab Emirates Dirham"),

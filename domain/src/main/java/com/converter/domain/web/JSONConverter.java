@@ -1,4 +1,6 @@
-package com.converter.rest.model;
+package com.converter.domain.web;
+
+import java.math.BigDecimal;
 
 public class JSONConverter {
 
@@ -7,6 +9,9 @@ public class JSONConverter {
     private Double temperature;
     private Integer minimumTemperature;
     private Integer maximumTemperature;
+    private String currencyFrom;
+    private String currencyTo;
+    private BigDecimal conversionRate;
 
     public String getUnit() {
         return unit;
@@ -48,4 +53,27 @@ public class JSONConverter {
         this.maximumTemperature = maximumTemperature;
     }
 
+    public String getCurrencyFrom() {
+        return currencyFrom;
+    }
+
+    public void setCurrencyFrom(final String currencyFrom) {
+        this.currencyFrom = currencyFrom;
+    }
+
+    public String getCurrencyTo() {
+        return currencyTo;
+    }
+
+    public void setCurrencyTo(final String currencyTo) {
+        this.currencyTo = currencyTo;
+    }
+
+    public BigDecimal getConversionRate() {
+        return conversionRate;
+    }
+
+    public void setConversionRate(final BigDecimal conversionRate) {
+        this.conversionRate = conversionRate;
+    }
 }

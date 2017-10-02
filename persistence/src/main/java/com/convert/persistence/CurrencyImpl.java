@@ -1,4 +1,4 @@
-package com.convert.persistence.model;
+package com.convert.persistence;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
@@ -15,11 +15,14 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
+import com.converter.domain.persistence.Currency;
+import com.converter.domain.persistence.CurrencyCode;
+
 @Entity
 @Table(name = "CURRENCY")
 @SequenceGenerator(name = "currency_seq", sequenceName = "CURRENCY_SEQ")
-@NamedQuery(name = "getAllCurrencies", query = "SELECT e FROM Currency e")
-public class Currency {
+@NamedQuery(name = "getCurrency", query = "SELECT e FROM CurrencyImpl e WHERE e.fromCurrencyCode=:fromCurrencyCode and e.toCurrencyCode=:toCurrencyCode order by e.conversionDate desc")
+public class CurrencyImpl implements Currency {
 
     @Id @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "currency_seq")
