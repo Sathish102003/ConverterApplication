@@ -84,7 +84,7 @@
                         </div>
                         <br/>
                     </div>
-                    <div id="result" class="controls" ng-show="weatherResultAvailable">
+                    <div id="weatherResult" class="controls" ng-show="weatherResultAvailable">
                         <div class="input-append">
                             <label class="span4"> Current Temp : {{ weather.temperature }} </label>
                         </div>
@@ -95,7 +95,39 @@
                             <label class="span4"> Min Temp : {{ weather.minimumTemperature }} </label>
                         </div>
                         <div class="input-append text-center">
-                            <button class="btn btn-primary" ng-click="convert()">Convert to {{ weather.unit == 'Metric' ? 'Fahrenheit' : 'Celsius' }}</button>
+                            <button class="btn btn-primary" ng-click="convert(weather.unit == 'Metric' ? 'Imperial' : 'Metric')">Convert to {{ weather.unit == 'Metric' ? 'Fahrenheit' : 'Celsius' }}</button>
+                            <button class="btn btn-primary" ng-click="reset()">Reset</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group form-horizontal well" ng-show="isLoadCurrency">
+                    <div class="controls">
+                        <div class="input-append">
+                            <label class="span4"> CurrencyFrom :
+                                <select class="span4" name="currencyFrom" ng-model="currency.currencyFrom" ng-options="currency for currency in currencies" required>
+                                    <option value="">Select Currency</option>
+                                </select>
+                            </label>
+                        </div>
+                        <br/>
+                        <div class="input-append">
+                            <label class="span4"> CurrencyTo :
+                                <select class="span4" name="currencyTo" ng-model="currency.currencyTo" ng-options="currency for currency in currencies" required>
+                                    <option value="">Select Currency</option>
+                                </select>
+                            </label>
+                        </div>
+                        <br/>
+                        <div class="input-append text-center">
+                            <button class="btn btn-primary" ng-click="getCurrency()">Get Currency</button>
+                        </div>
+                        <br/>
+                    </div>
+                    <div id="currencyResult" class="controls" ng-show="currencyResultAvailable">
+                        <div class="input-append">
+                            <label class="span4"> ConversionRate Temp : {{ currency.conversionRate }} </label>
+                        </div>
+                        <div class="input-append text-center">
                             <button class="btn btn-primary" ng-click="reset()">Reset</button>
                         </div>
                     </div>

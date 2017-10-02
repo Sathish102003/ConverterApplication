@@ -31,7 +31,7 @@ public class CurrencyBOImpl implements CurrencyBO {
     public JSONConverter convertCurrency(final String currencyFrom, final String currencyTo) {
         final Currency currency =
                 currencyDO.getCurrency(CurrencyCode.valueOf(currencyFrom), CurrencyCode.valueOf(currencyTo));
-        if (NOW.minusMinutes(30).isBefore(currency.getConversionDate())) {
+        if (currency != null && NOW.minusMinutes(30).isBefore(currency.getConversionDate())) {
             return getJsonConverter(currencyFrom, currencyTo, currency.getConversionRate());
         }
 

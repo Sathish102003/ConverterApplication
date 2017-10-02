@@ -112,7 +112,7 @@
             <plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
                 <artifactId>maven-jaxb2-plugin</artifactId>
-                <version>0.8.3</version>
+                <version>0.9.0</version>
                 <configuration>
                     <args>
                         <param>-npa</param>
@@ -125,6 +125,7 @@
                     <removeOldOutput>true</removeOldOutput>
                     <verbose>true</verbose>
                     <extension>true</extension>
+                    <accessExternalSchema>all</accessExternalSchema>
                 </configuration>
                 <executions>
                     <execution>
